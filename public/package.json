@@ -1,0 +1,21 @@
+{
+  "name": "sass",
+  "version": "1.0.0",
+  "description": "sass for using material-dashboard pro  dashboard",
+  "main": "index.js",
+  "scripts": {
+    "build:bs5": "node-sass assets/scss/bootstrap.scss assets/css/bootstrap.css dist",
+    "build:style": "node-sass assets/scss/style.scss assets/css/style.css",
+    "watch:bs5": "npm run build:bs5 && npm run build:bs5 -- -w",
+    "watch:style": "npm run build:style && npm run build:style -- -w"
+  },
+  "author": "khalid baloch",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  },
+  "dependencies": {
+    "node-sass-watcher": "^0.5.1",
+    "react": "^17.0.2"
+  }
+}

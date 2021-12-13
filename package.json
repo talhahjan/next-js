@@ -1,0 +1,40 @@
+{
+  "name": "next-auth-example",
+  "version": "0.0.0",
+  "private": true,
+  "description": "An example project for NextAuth.js",
+  "repository": "https://github.com/nextauthjs/next-auth-example.git",
+  "bugs": {
+    "url": "https://github.com/nextauthjs/next-auth/issues"
+  },
+  "homepage": "http://next-auth-example.now.sh",
+  "main": "",
+  "scripts": {
+    "build:bs5": "node-sass public/assets/scss/bootstrap.scss public/assets/css/bootstrap.css dist",
+    "build:style": "node-sass public/assets/scss/style.scss public/assets/css/style.css",
+    "watch:bs5": "npm run build:bs5 && npm run build:bs5 -- -w",
+    "watch:style": "npm run build:style && npm run build:style -- -w",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Iain Collins <me@iaincollins.com>",
+  "contributors": [
+    "Balázs Orbán <info@balazsorban.com>"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  },
+  "dependencies": {
+    "node-sass-watcher": "^0.5.1",
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
+    "next": "latest",
+    "next-auth": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "recoil": "^0.5.2"
+  }
+}
