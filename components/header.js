@@ -173,13 +173,15 @@ const Header = (props) => {
                             </div>
                             <div className="social-line text-center">
                               <a
-                                href="login/facebook"
+                                href="#"
+                                onClick={() => signIn("facebook")}
                                 className="btn-social btn-outline-facebook btn-social-circle waves-effect waves-light m-1"
                               >
                                 <FaFacebookF />
                               </a>
                               <a
-                                href="login/google"
+                                href="#"
+                                onClick={() => signIn("google")}
                                 className="btn-social btn-outline-google btn-social-circle waves-effect waves-light m-1"
                               >
                                 <FaGooglePlusG />

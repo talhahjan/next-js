@@ -6,8 +6,8 @@ import axios from "axios";
 // axios.defaults.baseURL = process.env.LARAVEL_API_BASE_URI;
 axios.defaults.baseURL = "http://localhost/l8ecom/";
 axios.defaults.withCredentials = true;
-axios.defaults.headers.post["Conent-Type"] = "application/json";
-axios.defaults.headers.post["Accept"] = "application/json";
+axios.defaults.headers.common["Conent-Type"] = "application/json";
+axios.defaults.headers.common["Accept"] = "application/json";
 import { RecoilRoot } from "recoil";
 
 function MyApp({ Component, pageProps }) {

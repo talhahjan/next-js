@@ -582,25 +582,38 @@ main .carousel-inner {
 
 .welcome-page {
   margin-top: 60px; }
+  .welcome-page .section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+  .welcome-page .categories {
+    box-shadow: none;
+    height: 80px;
+    max-width: 960px;
+    margin-bottom: 10px; }
   .welcome-page .department-wrapper {
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
     width: 100%;
+    padding: 0 5px;
+    display: flex;
+    justify-content: center;
     -webkit-overflow-scrolling: touch; }
     .welcome-page .department-wrapper li {
       display: inline-block;
-      float: none; }
+      float: none;
+      font-size: 0.8rem;
+      padding: 0 5px; }
     .welcome-page .department-wrapper.flex {
       display: flex;
       flex-wrap: nowrap; }
     .welcome-page .department-wrapper.flex li {
       cursor: pointer;
       margin: auto 5px;
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      line-height: 80px;
+      border-radius: 20px;
+      min-width: 80px;
+      height: 30px;
+      line-height: 30px;
       text-align: center; }
     .welcome-page .department-wrapper::-webkit-scrollbar {
       display: none; }

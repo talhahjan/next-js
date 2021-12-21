@@ -5,8 +5,19 @@ import { useSetRecoilState } from "recoil";
 import Link from "next/link";
 import { userState, widthState } from "../lib/atoms";
 import { useSession } from "next-auth/react";
-const Home = () => {
+import CatsBySection from "../components/catsBySection";
+import axios from "axios";
+
+const Home = ({ sections }) => {
   const { data: session } = useSession();
+  const bgs = [
+    "bg-danger",
+    "bg-rose",
+    "bg-dark",
+    "bg-warning",
+    "bg-info",
+    "bg-success",
+  ];
 
   const setWidth = useSetRecoilState(widthState);
   const setuser = useSetRecoilState(userState);
@@ -48,19 +59,10 @@ const Home = () => {
       <SideBar />
 
       <div className="welcome-page">
-        {/* <!-- departments start here  --> */}
+        {/* Mega Menu */}
 
-        <div class="department-wrapper flex">
-          <ul>
-            <li className="bg-danger">Men</li>
-            <li className="bg-rose">Women</li>
-            <li className="bg-primary">Boys</li>
-            <li className="bg-secondary">Girls</li>
-            <li className="bg-dark">Kids</li>
-            <li className="bg-info">Accesories</li>
-          </ul>
-        </div>
-        {/* <!-- departments ends here ] --> */}
+        {/* mega Menu */}
+
         {/* <!-- carousel starts  --> */}
         <div
           id="carouselExampleIndicators"
@@ -92,22 +94,24 @@ const Home = () => {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                src="assets/images/slide1.jpg"
+                src={axios.defaults.baseURL + "assets/images/slide1.jpg"}
                 className="d-block w-100"
                 alt="..."
-                style={{ maxHeight: "250px" }}
+                style={{ maxHeight: "300px" }}
               />
             </div>
             <div className="carousel-item">
               <img
-                src="./assets/images/slide2.jpg"
+                style={{ maxHeight: "300px" }}
+                src={axios.defaults.baseURL + "assets/images/slide2.jpg"}
                 className="d-block w-100"
                 alt="..."
               />
             </div>
             <div className="carousel-item">
               <img
-                src="./assets/images/slide3.jpg"
+                style={{ maxHeight: "300px" }}
+                src={axios.defaults.baseURL + "assets/images/slide2.jpg"}
                 className="d-block w-100"
                 alt="..."
               />
@@ -139,6 +143,9 @@ const Home = () => {
           </button>
         </div>
         {/* <!-- carousel ends  --> */}
+        <div className="categories shadow">
+          <CatsBySection section={sections} />
+        </div>
       </div>
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -148,5 +155,16 @@ const Home = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  const getCategories = await fetch("http://localhost/l8ecom/api/sections");
+  const sections = await getCategories.json();
+
+  return {
+    props: {
+      sections: sections,
+    }, // will be passed to the page component as props
+  };
+}
 
 export default Home;

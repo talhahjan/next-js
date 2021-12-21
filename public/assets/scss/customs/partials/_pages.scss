@@ -250,17 +250,34 @@
 
 .welcome-page {
   margin-top: 60px;
+  .section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .categories {
+    box-shadow: none;
+    height: 80px;
+    max-width: 960px;
+    margin-bottom: 10px;
+  }
 
   .department-wrapper {
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
     width: 100%;
+    padding: 0 5px;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
     -webkit-overflow-scrolling: touch;
 
     li {
       display: inline-block;
       float: none;
+      font-size: 0.8rem;
+      padding: 0 5px;
     }
     &.flex {
       display: flex;
@@ -269,10 +286,10 @@
     &.flex li {
       cursor: pointer;
       margin: auto 5px;
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      line-height: 80px;
+      border-radius: 20px;
+      min-width: 80px;
+      height: 30px;
+      line-height: 30px;
       text-align: center;
     }
     &::-webkit-scrollbar {
