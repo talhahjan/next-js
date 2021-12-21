@@ -38,7 +38,7 @@ const CatsBySection = ({ section }) => {
                 <ul>
                   {curItem.categories.map((curCat) => {
                     return (
-                      <li key={curCat.id} className="bg-rose">
+                      <li key={curCat.id} className="bg-dark">
                         {curCat.title}
                       </li>
                     );
