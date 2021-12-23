@@ -157,7 +157,9 @@ const Home = ({ sections }) => {
 };
 
 export async function getServerSideProps(context) {
-  const getCategories = await fetch("http://tjshoes.epizy.com/section.php");
+  const getCategories = await fetch(
+    "http://tjshoes.epizy.com/laravel/api/sections"
+  );
   const sections = await getCategories.json();
 
   return {
