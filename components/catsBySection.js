@@ -7,7 +7,7 @@ const CatsBySection = ({ section }) => {
             return (
               <button
                 key={curElem.id}
-                class={"nav-link" + (curElem.id === 1 ? " active" : "")}
+                className={"nav-link" + (curElem.id == 1 ? " active" : "")}
                 id={"nav-" + curElem.title + "-tab"}
                 data-bs-toggle="tab"
                 data-bs-target={"#nav-" + curElem.title}

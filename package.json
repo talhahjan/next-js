@@ -15,8 +15,11 @@
     "watch:bs5": "npm run build:bs5 && npm run build:bs5 -- -w",
     "watch:style": "npm run build:style && npm run build:style -- -w",
     "dev": "next",
+    "start": "next start -H 0.0.0.0 -p $PORT",
     "build": "next build",
-    "start": "next start"
+    "start:dev": "next start",
+    "star:prod": " next start -p 80",
+    "export": "next build && next export"
   },
   "author": "Iain Collins <me@iaincollins.com>",
   "contributors": [
@@ -27,11 +30,11 @@
     "node-sass": "^4.14.1"
   },
   "dependencies": {
-    "node-sass-watcher": "^0.5.1",
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
-    "next": "latest",
-    "next-auth": "latest",
+    "next": "^12.0.7",
+    "next-auth": "^4.0.5",
+    "node-sass-watcher": "^0.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
