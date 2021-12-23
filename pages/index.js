@@ -157,7 +157,7 @@ const Home = ({ sections }) => {
 };
 
 export async function getServerSideProps(context) {
-  const getCategories = await fetch("http://localhost/l8ecom/api/sections");
+  const getCategories = await fetch("http://tjshoes.epizy.com/section.php");
   const sections = await getCategories.json();
 
   return {
@@ -166,5 +166,4 @@ export async function getServerSideProps(context) {
     }, // will be passed to the page component as props
   };
 }
-
 export default Home;
