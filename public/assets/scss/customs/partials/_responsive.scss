@@ -37,6 +37,13 @@
     bottom: 50px;
     width: 100%;
   }
+  #filter::after {
+    content: " & Refine";
+  }
+
+  .filter {
+    width: 100%;
+  }
 }
 
 // Medium devices (tablets, less than 992px)
@@ -57,10 +64,9 @@
   .header .navbar {
     right: 2rem;
   }
-.departments{
-  justify-content: space-around;
-}
-
+  .departments {
+    justify-content: space-around;
+  }
 }
 
 // Large devices (desktops, less than 1200px)

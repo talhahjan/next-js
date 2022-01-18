@@ -1,8 +1,12 @@
-const SideBar = () => {
+import useCollapse from "react-collapsed";
+import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
+import Collapsable from "../components/collapsable";
+
+const SideBar = ({ props }) => {
   return (
     <>
       <div
-        className="offcanvas offcanvas-start"
+        className="filter offcanvas offcanvas-start"
         tabIndex="-1"
         id="offcanvasExample"
       >
@@ -18,37 +22,9 @@ const SideBar = () => {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <div>
-            Some text as placeholder. In real life you can have the elements you
-            have chosen. Like, text, images, lists, etc.
-          </div>
-          <div className="dropdown mt-3">
-            <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-bs-toggle="dropdown"
-            >
-              Dropdown button
-            </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
-            </ul>
-          </div>
+          <Collapsable title="Mens">
+            <Collapsable title="Shoes">asasas</Collapsable>
+          </Collapsable>
         </div>
       </div>
     </>

@@ -596,8 +596,9 @@ main .carousel-inner {
     white-space: nowrap;
     width: 100%;
     padding: 0 5px;
+    margin: 0 10px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     -webkit-overflow-scrolling: touch; }
     .welcome-page .department-wrapper li {
       display: inline-block;
@@ -614,7 +615,8 @@ main .carousel-inner {
       min-width: 80px;
       height: 30px;
       line-height: 30px;
-      text-align: center; }
+      text-align: center;
+      padding: 0 10px; }
     .welcome-page .department-wrapper::-webkit-scrollbar {
       display: none; }
 
@@ -935,6 +937,10 @@ footer.sm {
     position: sticky;
     left: 0;
     bottom: 50px;
+    width: 100%; }
+  #filter::after {
+    content: " & Refine"; }
+  .filter {
     width: 100%; } }
 
 @media (max-width: 991.98px) {

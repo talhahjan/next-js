@@ -1,6 +1,6 @@
 import Head from "next/head";
 import SideBar from "../components/sideBar";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import Link from "next/link";
 import { userState, widthState } from "../lib/atoms";
@@ -10,14 +10,6 @@ import axios from "axios";
 
 const Home = ({ sections }) => {
   const { data: session } = useSession();
-  const bgs = [
-    "bg-danger",
-    "bg-rose",
-    "bg-dark",
-    "bg-warning",
-    "bg-info",
-    "bg-success",
-  ];
 
   const setWidth = useSetRecoilState(widthState);
   const setuser = useSetRecoilState(userState);
@@ -41,12 +33,13 @@ const Home = ({ sections }) => {
     setWidth(window.innerWidth);
     window.addEventListener("resize", () => {
       setWidth(window.innerWidth);
+      console.log("resized");
     });
   });
 
   useEffect(() => {
     document.querySelector("body").classList.add("wrapper");
-  });
+  }, []);
   return (
     <>
       <Head>
@@ -143,10 +136,16 @@ const Home = ({ sections }) => {
           </button>
         </div>
         {/* <!-- carousel ends  --> */}
+
+        <div className="categories shadow">
+          <CatsBySection section={sections} />
+        </div>
+
         <div className="categories shadow">
           <CatsBySection section={sections} />
         </div>
       </div>
+
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -157,12 +156,9 @@ const Home = ({ sections }) => {
 };
 
 export async function getServerSideProps(context) {
-  // const getCategories = await fetch(
-  //   "http://tjshoes.epizy.com/laravel/api/sections"
-  // );
-  // const sections = await getCategories.json();
-  const sections =
-    '[{"id":1,"title":"Men","description":null,"categories":[{"id":1,"title":"Shoes","description":null,"slug":"shoes","pivot":{"section_id":1,"category_id":1}},{"id":2,"title":"Slippers","description":null,"slug":"slippers","pivot":{"section_id":1,"category_id":2}},{"id":3,"title":"Sandals","description":null,"slug":"sandals","pivot":{"section_id":1,"category_id":3}},{"id":5,"title":"Boots","description":null,"slug":"Boots","pivot":{"section_id":1,"category_id":5}},{"id":6,"title":"Moccasin","description":null,"slug":"moccasin","pivot":{"section_id":1,"category_id":6}},{"id":7,"title":"Slip-ons","description":null,"slug":"slip-ons","pivot":{"section_id":1,"category_id":7}},{"id":8,"title":"Loafers","description":null,"slug":"loafers","pivot":{"section_id":1,"category_id":8}},{"id":9,"title":"Flip-Flops","description":null,"slug":"folip-flops","pivot":{"section_id":1,"category_id":9}},{"id":10,"title":"Canvas","description":null,"slug":"canvas","pivot":{"section_id":1,"category_id":10}},{"id":11,"title":"Casual Shoes","description":null,"slug":"casual-shoes","pivot":{"section_id":1,"category_id":11}},{"id":14,"title":"Slides","description":null,"slug":"slides","pivot":{"section_id":1,"category_id":14}}]},{"id":2,"title":"Women","description":null,"categories":[{"id":1,"title":"Shoes","description":null,"slug":"shoes","pivot":{"section_id":2,"category_id":1}},{"id":2,"title":"Slippers","description":null,"slug":"slippers","pivot":{"section_id":2,"category_id":2}},{"id":3,"title":"Sandals","description":null,"slug":"sandals","pivot":{"section_id":2,"category_id":3}},{"id":4,"title":"Pumps","description":null,"slug":"pumps","pivot":{"section_id":2,"category_id":4}},{"id":5,"title":"Boots","description":null,"slug":"Boots","pivot":{"section_id":2,"category_id":5}},{"id":6,"title":"Moccasin","description":null,"slug":"moccasin","pivot":{"section_id":2,"category_id":6}},{"id":7,"title":"Slip-ons","description":null,"slug":"slip-ons","pivot":{"section_id":2,"category_id":7}},{"id":8,"title":"Loafers","description":null,"slug":"loafers","pivot":{"section_id":2,"category_id":8}},{"id":9,"title":"Flip-Flops","description":null,"slug":"folip-flops","pivot":{"section_id":2,"category_id":9}},{"id":10,"title":"Canvas","description":null,"slug":"canvas","pivot":{"section_id":2,"category_id":10}},{"id":11,"title":"Casual Shoes","description":null,"slug":"casual-shoes","pivot":{"section_id":2,"category_id":11}},{"id":13,"title":"Wedges","description":null,"slug":"wedges","pivot":{"section_id":2,"category_id":13}},{"id":15,"title":"Bridals","description":null,"slug":"bridals","pivot":{"section_id":2,"category_id":15}}]},{"id":3,"title":"Boys","description":null,"categories":[{"id":1,"title":"Shoes","description":null,"slug":"shoes","pivot":{"section_id":3,"category_id":1}},{"id":2,"title":"Slippers","description":null,"slug":"slippers","pivot":{"section_id":3,"category_id":2}},{"id":3,"title":"Sandals","description":null,"slug":"sandals","pivot":{"section_id":3,"category_id":3}},{"id":5,"title":"Boots","description":null,"slug":"Boots","pivot":{"section_id":3,"category_id":5}},{"id":6,"title":"Moccasin","description":null,"slug":"moccasin","pivot":{"section_id":3,"category_id":6}},{"id":7,"title":"Slip-ons","description":null,"slug":"slip-ons","pivot":{"section_id":3,"category_id":7}},{"id":8,"title":"Loafers","description":null,"slug":"loafers","pivot":{"section_id":3,"category_id":8}},{"id":9,"title":"Flip-Flops","description":null,"slug":"folip-flops","pivot":{"section_id":3,"category_id":9}},{"id":10,"title":"Canvas","description":null,"slug":"canvas","pivot":{"section_id":3,"category_id":10}},{"id":11,"title":"Casual Shoes","description":null,"slug":"casual-shoes","pivot":{"section_id":3,"category_id":11}},{"id":12,"title":"School Shoes","description":null,"slug":"school-shoes","pivot":{"section_id":3,"category_id":12}}]},{"id":4,"title":"Girls","description":null,"categories":[{"id":1,"title":"Shoes","description":null,"slug":"shoes","pivot":{"section_id":4,"category_id":1}},{"id":2,"title":"Slippers","description":null,"slug":"slippers","pivot":{"section_id":4,"category_id":2}},{"id":3,"title":"Sandals","description":null,"slug":"sandals","pivot":{"section_id":4,"category_id":3}},{"id":5,"title":"Boots","description":null,"slug":"Boots","pivot":{"section_id":4,"category_id":5}},{"id":6,"title":"Moccasin","description":null,"slug":"moccasin","pivot":{"section_id":4,"category_id":6}},{"id":7,"title":"Slip-ons","description":null,"slug":"slip-ons","pivot":{"section_id":4,"category_id":7}},{"id":8,"title":"Loafers","description":null,"slug":"loafers","pivot":{"section_id":4,"category_id":8}},{"id":9,"title":"Flip-Flops","description":null,"slug":"folip-flops","pivot":{"section_id":4,"category_id":9}},{"id":10,"title":"Canvas","description":null,"slug":"canvas","pivot":{"section_id":4,"category_id":10}},{"id":11,"title":"Casual Shoes","description":null,"slug":"casual-shoes","pivot":{"section_id":4,"category_id":11}},{"id":12,"title":"School Shoes","description":null,"slug":"school-shoes","pivot":{"section_id":4,"category_id":12}},{"id":13,"title":"Wedges","description":null,"slug":"wedges","pivot":{"section_id":4,"category_id":13}}]},{"id":5,"title":"Accesorries","description":null,"categories":[]}]';
+  const getCategories = await fetch("http://localhost/l8ecom/api/categories");
+  const sections = await getCategories.json();
+
   return {
     props: {
       sections: sections,

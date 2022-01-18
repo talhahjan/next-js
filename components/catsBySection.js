@@ -1,3 +1,4 @@
+import Link from "next/link";
 const CatsBySection = ({ section }) => {
   return (
     <>
@@ -39,7 +40,18 @@ const CatsBySection = ({ section }) => {
                   {curItem.categories.map((curCat) => {
                     return (
                       <li key={curCat.id} className="bg-dark">
-                        {curCat.title}
+                        <Link
+                          href={
+                            curItem.slug +
+                            "/" +
+                            curCat.title
+                              .toLowerCase()
+                              .replace(/ /g, "-")
+                              .replace(/[^\w-]+/g, "")
+                          }
+                        >
+                          {curCat.title}
+                        </Link>
                       </li>
                     );
                   })}
